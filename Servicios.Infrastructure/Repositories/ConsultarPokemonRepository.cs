@@ -30,10 +30,10 @@ namespace Servicios.Infrastructure.Repositories
             Ability ability = new Ability();
             Abilities abilities = new Abilities();           
             Pokemon pokemonResponse = new Pokemon();
-
+            string nombre_pokemon_min = nombre_pokemon.ToLower();
             try
             {
-                var client = new RestClient(_configuration["AppSettings:url_pokemon"].ToString() + nombre_pokemon);
+                var client = new RestClient(_configuration["AppSettings:url_pokemon"].ToString() + nombre_pokemon_min);
                 var request = new RestRequest("", Method.Get);
                 request.AddHeader("User-Agent", "insomnia/8.6.1");
                 RestResponse response = client.Execute(request);
